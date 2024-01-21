@@ -6,14 +6,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+@Database(
+    entities = [UserEntity::class, UserAddressEntity::class],
+    version = 2,
+    exportSchema = false
+)
 abstract class AppDatabase() : RoomDatabase() {
 
     abstract fun appDao(): AppDao
 
     companion object {
 
-        private const val DATABASE_NAME = "app_database.db"
+        private const val DATABASE_NAME = "app_database4.db"
         private const val PRE_DATABASE_NAME = "app_database"
 
         @Volatile
@@ -28,6 +32,7 @@ abstract class AppDatabase() : RoomDatabase() {
                     AppDatabase::class.java,
                     DATABASE_NAME
                 )
+                    .fallbackToDestructiveMigration()
                     .createFromAsset(DATABASE_NAME, object : PrepackagedDatabaseCallback() {
 
                         override fun onOpenPrepackagedDatabase(db: SupportSQLiteDatabase) {

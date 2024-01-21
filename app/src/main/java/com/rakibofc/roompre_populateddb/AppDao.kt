@@ -13,4 +13,7 @@ interface AppDao {
 
     @Query("SELECT * FROM users")
     suspend fun getUsers(): List<UserEntity>
+
+    @Query("SELECT * FROM address")
+    suspend fun getAddresses(): List<UserAddressEntity>
 }

@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
             dao.getUsers().forEach {
                 Log.e("TAG", "User: ${it.email}")
             }
+
+            dao.getAddresses().forEach {
+                Log.e("TAG", "Address: ${it.address}")
+            }
         }
 
         findViewById<Button>(R.id.button).setOnClickListener {
